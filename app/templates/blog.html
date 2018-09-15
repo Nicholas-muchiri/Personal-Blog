@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+            
+        </div>    
+        <div class="col-md-7 col-lg-7">
+            <hr>
+            <h2 class="text-center">{{blog.title}}</h2> 
+            
+            {% if current_user.is_admin %}
+            <form action="{{ url_for('main.delete_blog', id = blog.id) }}" method=post class=delete-entry>
+                <input type="hidden" name="blog_id" value="{{blog.id}}" />
+                <input class="btn btn-danger" type="submit" value="Delete post" />
+           </form>
+           {% else %}
+
+           {% endif %}
+            <hr>
+            <img src="{{blog.image_path}}" alt="Post Image" class="img-thumbnail">
+            <p>{{format_blog | safe}}</p>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h2>Comments Section</h2>
+        <hr>
+        {% if comments %}
+            {{ macro.displayComments(comments) }}      
+        {% else %}
+        <h3>No Comment</h3>
+        {% endif %}
+        <div class="panel">
+            <h3>Post a Comment</h3>
+            <form action="/blog/{{blog.id}}">
+                <div class="row">
+                        <div class="col-md-12 comment-field">
+                            <textarea style="overflow:hidden" type="text" name="comment" placeholder="Post a comment" class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-6 name-field">
+                            <input type="text" name="name" placeholder="Your name" class="form-control">
+                        </div>
+                        <div class="col-md-6 email-field">
+                            <input type="text" name="email" placeholder="Email Address" class="form-control">
+                        </div>
+                        <input style="display: block" type="submit" value="Submit" class="btn btn-success">
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
