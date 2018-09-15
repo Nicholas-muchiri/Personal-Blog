@@ -1,0 +1,26 @@
+{% macro displayAllBlogs(blog_list) %}
+    {% for blog in blog_list %}
+        <div class="row">
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+            <div class="col-md-7 col-lg-7">
+                <hr>
+                <h4 class="text-center index-title"><a href="{{url_for('main.new_blog', id = blog.id)}}">{{blog.title}}</a></h4>
+                <hr>
+                <h5>Posted at {{blog.time}}</h5>
+                <p>{{blog.post | truncate(200)}}</p>
+
+                <a class="btn btn-info" href="/blog/{{blog.id}}">READ MORE</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+{% macro displayComments(comments_list) %}
+    {% for comment in comments_list %}
+        <h3>{{comment.name}}</h3>
+        <h6>Posted {{comment.time}}</h6>
+        <p>{{comment.post_comment}}</p> 
+    {% endfor %}
+{% endmacro %}
