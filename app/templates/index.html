@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+<!-- styles block -->
+
+<!-- content block -->
+{% block content %}
+    <div class="container-fluid">
+        {{ macro.displayAllBlogs(blogs) }}
+    </div>
+{% endblock %}
