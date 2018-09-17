@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(255))   
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     is_admin = db.Column(db.Boolean, default = False)
-    blogs =  db.relationship('Blog', backref = 'user', lazy = "dynamic")
+    blog =  db.relationship('Blog', backref = 'user', lazy = "dynamic")
 
     @property
     def password(self):
