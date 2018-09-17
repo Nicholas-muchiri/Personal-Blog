@@ -19,7 +19,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message('Welcome to my Blog', 'email/welcome_subscriber', user.email, user = user)
+        # mail_message('Welcome to my Blog', 'email/welcome_subscriber', user.email, user = user)
 
         flash('You have successfully registered! You may now log in.')
         return redirect(url_for('auth.login'))
