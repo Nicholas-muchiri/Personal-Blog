@@ -1,19 +1,36 @@
 {% extends 'bootstrap/base.html' %}
 
-<!-- Styles block -->
-{% block styles %}
+{% block styles %} 
+  {{ super() }}
 
-  {{super()}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!--Importing the simple mde css and js files  -->
-  {{ simplemde.css}}
-  {{ simplemde.js }}
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}"> 
+<link href='https://fonts.googleapis.com/css?family=Antic' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Tenor Sans' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lovers Quarrel' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Telex' rel='stylesheet'>
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="static/js/jquery.backstretch.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="static/js/jquery.backstretch.min.js"></script>  
+  
 
 {% endblock %}
 
-<!-- Navbar block -->
+<!-- navbar -->
 {% block navbar %}
-
     {% include 'navbar.html' %}
-    
 {% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.easing.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/script.js')}}"></script>
+{%endblock%}
