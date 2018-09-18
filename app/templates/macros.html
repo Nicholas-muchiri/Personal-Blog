@@ -1,26 +1,172 @@
-{% macro displayAllBlogs(blog_list) %}
-    {% for blog in blog_list %}
+<!-- Display posts -->
+{% macro displayPostList(post_list) %}
+
+    {% for post in post_list %}
         <div class="row">
+            
             <div class="col-md-2 col-lg-2">
                 
             </div>
-            <div class="col-md-7 col-lg-7">
-                <hr>
-                <h4 class="text-center index-title"><a href="{{url_for('main.new_blog', id = blog.id)}}">{{blog.title}}</a></h4>
-                <hr>
-                <h5>Posted at {{blog.time}}</h5>
-                <p>{{blog.post | truncate(200)}}</p>
 
-                <a class="btn btn-info" href="/blog/{{blog.id}}">READ MORE</a>
+            <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 well post-well">
+            
+                <li class="text-center">
+
+                    <h3 class="post-title">
+
+                        <a href="/post/{{post.id}}">
+                            {{ post.post_title }}   
+                        </a>
+
+                        <br>
+
+                        <small>
+                            by {{ post.user.username }}
+                        </small>
+                        
+                    </h3>
+
+                </li>
+
             </div>
+
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+
         </div>
+
     {% endfor %}
+
 {% endmacro %}
 
-{% macro displayComments(comments_list) %}
-    {% for comment in comments_list %}
-        <h3>{{comment.name}}</h3>
-        <h6>Posted {{comment.time}}</h6>
-        <p>{{comment.post_comment}}</p> 
+
+<!-- Display comments -->
+{% macro displayCommentList(comment_list) %}
+
+
+    {% for comment in comment_list %}
+        <div class="row">
+            
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+
+            <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 well comment-well">
+            
+                <li>
+
+                    <h4 class="comment-content">
+                        
+                        {{ comment.comment_content}}
+
+                        <br>
+
+                        <small class="comment-author"> by {{ comment.user.username }} </small>
+                        
+                    </h4>
+
+                </li>
+
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+
+        </div>
+
     {% endfor %}
+
 {% endmacro %}
+
+<!-- Display posts on writer route -->
+{% macro displayPostListWriter(post_list) %}
+
+    {% for post in post_list %}
+        <div class="row">
+            
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+
+            <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 well post-well">
+            
+                <li class="text-center">
+
+                    <h3 class="post-title">
+                        
+                        <a href="/writer/post/{{post.id}}">
+                            {{ post.post_title }}   
+                        </a>
+
+                        <br>
+
+                        <small>
+                            by {{ post.user.username }}
+                        </small>
+                        
+                    </h3>
+
+                </li>
+
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
+
+<!-- Display comments -->
+{% macro displayCommentListWriter(comment_list) %}
+
+
+    {% for comment in comment_list %}
+        <div class="row">
+            
+            <div class="col-md-2 col-lg-2">
+                
+            </div>
+
+            <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 well comment-well">
+            
+                <li>
+
+                    <h4 class="comment-content">
+                        
+                        {{ comment.comment_content}}
+
+                        <br>
+
+                        <small class="comment-author"> by {{ comment.user.username }} </small>
+                        
+                    </h4>
+
+                </li>
+
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+
+                <h4>
+                    <a href="/writer/post/comment/delete/{{comment.id}}">
+                        Delete Comment
+                    </a>
+                </h4>
+                
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
+
+
+
+

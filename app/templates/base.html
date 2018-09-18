@@ -1,44 +1,19 @@
 {% extends 'bootstrap/base.html' %}
-{% import 'bootstrap/wtf.html' as wtf%}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{{ title }} | Project Dream Team</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-</head>
-<body>
-    <!-- styles -->
-    {% block styles %}
-        {{super()}}
-        <!-- import simplemde css and js -->
-        {{ simplemde.css }}
-        {{ simplemde.js }}
-    
-        <link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}"> 
-    {% endblock %}
-    
-    <!-- navbar -->
-    {% block navbar %}
-        {% include 'navbar.html' %}
-    {% endblock %}
-    <div class="wrapper">
-      {% block content %}
-      <div class="col-md-3 col-lg-3">
-        <div class="well subscribe-form">
-            {{ wtf.quick_form(email_form) }}
-        </div>
-      </div>
-      {% endblock %}
-      <div class="push"></div>
-    </div>
-<!-- footer -->
-{% block footer %}
-    {{ super() }}
-    {% include 'footer.html' %}
+<!-- Styles block -->
+{% block styles %}
+
+  {{super()}}
+
+  <!--Importing the simple mde css and js files  -->
+  {{ simplemde.css}}
+  {{ simplemde.js }}
+
 {% endblock %}
-</body>
-</html>
+
+<!-- Navbar block -->
+{% block navbar %}
+
+    {% include 'navbar.html' %}
+    
+{% endblock %}
